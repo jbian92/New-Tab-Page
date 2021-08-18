@@ -1,14 +1,3 @@
-/**
- * This is the JavaScript file that we wrote for you to handle
- * certain features without having you worry too much about the 
- * underlying tasks
- * 
- * You do not need to change or remove this file. You are also 
- * not required to use these functions.
- * 
- * AUTHOR: @itsmingjie
- */
-
 const WEATHER_API_KEY = "YOUR_API_KEY_HERE"
 
 class Utils {
@@ -45,7 +34,7 @@ class Utils {
     return object
   }
 
-    /** Easy API wrapper to handle weather services */
+  /** Easy API wrapper to handle weather services */
   static getWeather = (location) => {
     const key = WEATHER_API_KEY;
     return new Promise((resolve, reject) => {
