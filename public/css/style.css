@@ -16,7 +16,8 @@ body {
 
 .middle {
   width: 100%;
-  position: relative;
+  position: absolute;
+  top: 300px;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -26,19 +27,7 @@ body {
   border-radius: 25px;
   background: rgba(192, 192, 192, 0.5);
   width: 500px;
-  position: absolute;
-  top: 300px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
   padding: 10px 5px 10px 5px;
-}
-
-.row {
-  position: absolute;
-  top: 570px;
-  left: 50.5%;
-  transform: translate(-50%, -50%);
 }
 
 .box {
