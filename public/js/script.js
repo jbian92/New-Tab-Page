@@ -1,12 +1,23 @@
 /**
  * This is the JavaScript file that powers most of the page's
- * dynamic content (e.g. time, date, etc.)!
- * 
- * If you want to start from scratch, you should remove everything
- * from this file. 
+ * dynamic content (e.g. time, date, etc.).
  */
 
 "use strict";
+
+var bg = [
+  "cats.jpg",
+  "space.jpg",
+  "mountains.jpg",
+  "books.jpg",
+  "plants.jpg"
+];
+
+function randomBackground() {
+  let random = bg[Math.floor(Math.random()*bg.length)];
+  let image = '../images/' + random
+  document.body.background = image;
+}
 
 (function () {
   function checkTime(i) {
@@ -36,8 +47,6 @@
   loadWeather();
 
 })();
-
-
 
 class Init {
   constructor() {
@@ -111,4 +120,3 @@ function timeTo12HrFormat(time) {
   let formatted_time = `${time_part_array[0]}:${time_part_array[1]} <span class="am_pm">${ampm}<span>`;
   return formatted_time;
 }
-
