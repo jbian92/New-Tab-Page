@@ -30,7 +30,7 @@ function randomBackground() {
       m = checkTime(today.getMinutes()),
       s = checkTime(today.getSeconds());
     let time = h + ":" + m;
-    // time = timeTo12HrFormat(time);
+    time = timeTo12HrFormat(time);
     document.getElementById("time").innerHTML = time;
     setTimeout(function () {
       startTime();
@@ -39,8 +39,19 @@ function randomBackground() {
   startTime();
 
   async function loadWeather() {
+    // Get the location
+    let location = Utils.readObject("location");
 
-    // up to you to implement!
+    if (location == null) {
+      location = prompt("Where are you located?")
+      Utils.saveObject("location", location)
+    }
+
+    // Get the weather data at that location
+    let weather = await Utils.getWeather(location);
+
+    document.querySelector("#temp").innerHTML=`${weather.temp_f}°F`
+    document.querySelector("#condition").innerHTML=`${weather.condition.text}<img src="${weather.condition.icon}" width="33px" />`
 
   }
 

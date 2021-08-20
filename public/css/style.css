@@ -11,23 +11,32 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
   color: white;
+}
+
+.col {
+  margin: 10px;
 }
 
 .middle {
   width: 100%;
   position: absolute;
-  top: 300px;
+  top: 400px;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+}
+
+.bar {
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .container {
   border-radius: 25px;
   background: rgba(192, 192, 192, 0.5);
   width: 500px;
-  padding: 10px 5px 10px 5px;
+  height: 140px;
 }
 
 .box {
@@ -63,9 +72,20 @@ p {
   font-size: 90px;
 }
 
-#time, #date {
+#condition {
   font-family: 'STIX Two Text', serif;
-  font-size: 45px;
+  font-size: 20px;
   font-weight: bold;
 }
 
+#temp {
+  font-family: 'STIX Two Text', serif;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#time, #date {
+  font-family: 'STIX Two Text', serif;
+  font-size: 24px;
+  font-weight: bold;
+}

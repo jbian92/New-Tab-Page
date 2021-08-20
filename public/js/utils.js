@@ -1,7 +1,7 @@
-const WEATHER_API_KEY = "YOUR_API_KEY_HERE"
+const WEATHER_API_KEY = "a6ec4748aef54c40a0300736212008"
 
 class Utils {
-
+  // Save your location for the weather API to use to determine your weather
   static saveObject = (key, object) => {
     if (this._isEmpty(key)) {
       throw new Error("Key cannot be empty.")
@@ -15,6 +15,7 @@ class Utils {
     localStorage.setItem(key, serialized)
   }
 
+  // Look for the object saved with a given key
   static readObject = (key) => {
     if (this._isEmpty(key)) {
       throw new Error("Key cannot be empty.")
@@ -24,6 +25,7 @@ class Utils {
     return JSON.parse(serialized)
   }
 
+  // Remove objects at a given key
   static removeObject = (key) => {
     let object = this.readObject(key)
 
@@ -34,7 +36,7 @@ class Utils {
     return object
   }
 
-  /** Easy API wrapper to handle weather services */
+  // Retrieve weather data at a certain location 
   static getWeather = (location) => {
     const key = WEATHER_API_KEY;
     return new Promise((resolve, reject) => {
@@ -95,37 +97,37 @@ class UtilsTester {
 
   /* from https://stackoverflow.com/a/6713782/11288183 */
   static _objEq = (x, y) => {
-      if ( x === y ) return true;
     // if both x and y are null or undefined and exactly the same
+    if ( x === y ) return true;
 
-  if ( ! ( x instanceof Object ) || ! ( y instanceof Object ) ) return false;
     // if they are not strictly equal, they both need to be Objects
+    if ( ! ( x instanceof Object ) || ! ( y instanceof Object ) ) return false;
 
-  if ( x.constructor !== y.constructor ) return false;
-    // they must have the exact same prototype chain, the closest we can do is
-    // test there constructor.
+    // they must have the exact same prototype chain so test their constructor
+    if ( x.constructor !== y.constructor ) return false;
 
-  for ( var p in x ) {
-    if ( ! x.hasOwnProperty( p ) ) continue;
+    for ( var p in x ) {
       // other properties were tested using x.constructor === y.constructor
+      if ( ! x.hasOwnProperty( p ) ) continue;
 
-    if ( ! y.hasOwnProperty( p ) ) return false;
       // allows to compare x[ p ] and y[ p ] when set to undefined
+      if ( ! y.hasOwnProperty( p ) ) return false;
 
-    if ( x[ p ] === y[ p ] ) continue;
       // if they have the same strict value or identity then they are equal
+      if ( x[ p ] === y[ p ] ) continue;
 
-    if ( typeof( x[ p ] ) !== "object" ) return false;
       // Numbers, Strings, Functions, Booleans must be strictly equal
+      if ( typeof( x[ p ] ) !== "object" ) return false;
 
-    if ( ! object_equals( x[ p ],  y[ p ] ) ) return false;
       // Objects and Arrays must be tested recursively
-  }
+      if ( ! object_equals( x[ p ],  y[ p ] ) ) return false;
+    }
 
-  for ( p in y )
-    if ( y.hasOwnProperty( p ) && ! x.hasOwnProperty( p ) )
-      return false;
-        // allows x[ p ] to be set to undefined
+    for ( p in y ) {
+      // allows x[ p ] to be set to undefined
+      if ( y.hasOwnProperty( p ) && ! x.hasOwnProperty( p ) )
+        return false;
+    }
 
   return true;
   }
