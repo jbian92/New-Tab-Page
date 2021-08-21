@@ -19,6 +19,20 @@ function randomBackground() {
   document.body.background = image;
 }
 
+async function changeWeather() {
+  let previousLocation = Utils.readObject("location");
+
+  // Get new location
+  let location = window.prompt("Where are you located?", previousLocation);
+  Utils.saveObject("location", location)
+
+  // Get the weather data at that location
+  let weather = await Utils.getWeather(location);
+
+  document.querySelector("#temp").innerHTML=`${weather.temp_f}°F `
+  document.querySelector("#condition").innerHTML=`${weather.condition.text}<img src="${weather.condition.icon}" width="33px" />`
+}
+
 (function () {
   function checkTime(i) {
     return i < 10 ? "0" + i : i;
@@ -50,11 +64,10 @@ function randomBackground() {
     // Get the weather data at that location
     let weather = await Utils.getWeather(location);
 
-    document.querySelector("#temp").innerHTML=`${weather.temp_f}°F`
+    document.querySelector("#temp").innerHTML=`${weather.temp_f}°F `
     document.querySelector("#condition").innerHTML=`${weather.condition.text}<img src="${weather.condition.icon}" width="33px" />`
 
   }
-
   loadWeather();
 
 })();
